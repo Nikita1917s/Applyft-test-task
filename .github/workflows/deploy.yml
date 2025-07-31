@@ -1,44 +1,49 @@
-name: Build & Deploy to GitHub Pages
+name: CI & Deploy to GitHub Pages
 
-# run on every push to main
+# Give the GITHUB_TOKEN rights to push pages
+permissions:
+  contents: write
+  pages:    write
+  id-token: write
+
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      # 1. checkout your code
+      # 1) Checkout your code
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2. install Node
+      # 2) Install Node & cache deps
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: 'npm'
+          cache: npm
 
-      # 3. install deps
+      # 3) Install dependencies
       - name: Install dependencies
         run: npm ci
 
-      # 4. build your Vite app
+      # 4) Run tests
+      - name: Run Jest tests
+        run: npm test -- --watchAll=false --passWithNoTests
+        # or if you’ve added "test:ci" in package.json:
+        # run: npm run test:ci
+
+      # 5) Build production bundle
       - name: Build
         run: npm run build
 
-      # 5. deploy to gh-pages branch
+      # 6) Deploy to gh-pages branch
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          # the branch the action should deploy to.
-          # this action will create it if it doesn't exist
-          branch: gh-pages
-          # folder the action should deploy
-          folder: dist
-          # cleans out existing files in gh-pages
+          branch: gh-pages       # deploy to gh-pages
+          folder: dist           # the build output folder
           clean: true
-          # allow the action to push automatically
           token: ${{ secrets.GITHUB_TOKEN }}
