@@ -1,0 +1,102 @@
+@use "/src/styles/mixins" as *;
+
+.navbar {
+  flex: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: calc(1200px + 32px);
+  width: 100%;
+  margin: 0 auto;
+  padding: 16px;
+  gap: 60px;
+  position: relative;
+
+  .navLinks {
+    display: flex;
+    gap: 60px;
+
+    @include for-desktop-down {
+      display: none;
+    }
+  }
+
+  a {
+    color: #191919;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 32px;
+
+    @include hover-supported {
+      color: #4a3aff;
+    }
+  }
+
+  .burger {
+    display: none;
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    transition-duration: 0.22s;
+
+    span {
+      display: block;
+      width: 24px;
+      height: 3px;
+      background-color: #191919;
+      border-radius: 2px;
+    }
+
+    &.open {
+      span:nth-child(1) {
+        transform: translateY(10.5px) rotate(45deg);
+      }
+      span:nth-child(2) {
+        opacity: 0;
+      }
+      span:nth-child(3) {
+        transform: translateY(-5.5px) rotate(-45deg);
+      }
+    }
+
+    @include for-desktop-down {
+      display: flex;
+      margin-left: auto;
+    }
+  }
+
+  .mobileMenu {
+    display: none;
+
+    @include for-desktop-down {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      height: calc(100vh - 67px);
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      padding: 8px 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    a {
+      margin: 12px 0;
+    }
+  }
+
+  .open {
+    @include for-desktop-down {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
