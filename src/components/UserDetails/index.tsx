@@ -12,7 +12,7 @@ export const UserDetails = ({ user }: UsersProps) => {
 
   return (
     <div className={styles["wrapper"]}>
-      <NoPhotoIcon />
+      <NoPhotoIcon className={styles["profilePhoto"]}/>
       <h1 className={styles["userUserName"]}>{user.username}</h1>
       <ul>
         <li>

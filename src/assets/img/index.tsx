@@ -6,8 +6,7 @@ export const NoPhotoIcon: React.FC<SVGProps<SVGSVGElement>> = (
 ) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={340}
-    height={340}
+    viewBox="0 0 340 340"
     role="img"
     aria-label="No profile available"
     {...props}
