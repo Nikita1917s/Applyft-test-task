@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
 export default defineConfig({
+  base: '/Applyft-test-task/',
   plugins: [react()],
   resolve: {
     alias: {
@@ -12,8 +13,5 @@ export default defineConfig({
       "@services": path.resolve(__dirname, "src/services"),
       "@/types": path.resolve(__dirname, "src/types"),
     },
-  },
-  build: {
-    outDir: "dist",
-  },
+  }
 });
