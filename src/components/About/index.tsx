@@ -1,6 +1,7 @@
 import styles from "./About.module.scss";
 
 export const About = () => {
+
   return (
     <>
       <h1 className={styles["title"]}>About This App</h1>
