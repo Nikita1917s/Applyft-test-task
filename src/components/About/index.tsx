@@ -21,12 +21,14 @@ export const About = () => {
         <li>Loading spinner and toast notifications for async states</li>
         <li>Responsive design</li>
         <li>SCSS partials + path aliases</li>
+        <li>{'Workflow is set up (build -> tests ->deployment>'}</li>
       </ul>
       <ul>
         <p>Tech Stack</p>
         <li>React 18 + TypeScript</li>
         <li>Vite</li>
         <li>React Router v6]</li>
+        <li>Github Actions</li>
         <li>SCSS Modules</li>
         <li>Jest</li>
         <li>react-toastify</li>
