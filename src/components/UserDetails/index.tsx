@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import type { User } from "@/types/User";
 import styles from "./userDetails.module.scss";
-import noPhoto from '@/assets/img/noPhoto.svg';
+import { NoPhotoIcon } from "@/assets/img";
 
 export interface UsersProps {
   user: User;
@@ -12,7 +12,7 @@ export const UserDetails = ({ user }: UsersProps) => {
 
   return (
     <div className={styles["wrapper"]}>
-      <img className={styles["profilePhoto"]} src={noPhoto} alt="Profile Img"/>
+      <NoPhotoIcon />
       <h1 className={styles["userUserName"]}>{user.username}</h1>
       <ul>
         <li>

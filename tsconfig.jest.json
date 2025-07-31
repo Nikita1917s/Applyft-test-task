@@ -5,5 +5,5 @@
     "module": "CommonJS",
     "verbatimModuleSyntax": false
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.test.ts", "src/**/*.test.tsx"]
+  "include": ["src/**/*"]
 }

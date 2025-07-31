@@ -37,9 +37,6 @@ describe('UserDetails component', () => {
       screen.getByRole('heading', { level: 1, name: mockUser.username })
     ).toBeInTheDocument();
 
-    const img = screen.getByRole('img');
-    expect(img).toHaveAttribute('src', '/assets/img/noPhoto.svg');
-
     expect(screen.getByText('Username:')).toBeInTheDocument();
     expect(screen.getByText(mockUser.name)).toBeInTheDocument();
 
